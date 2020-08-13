@@ -71,7 +71,7 @@ data.id
     if(error){
       return callback(error);
     }
-    return callback(null,result[0]);
+    return callback(null,result);
 }   
     );
 },
@@ -88,5 +88,16 @@ deleteUser:(data,callback)=>{
     );
 },
 
+getUserByEmail:(email,callback)=>{
+    db.query(`Select * from userDetails where email=?`,
+    [email],
+(error,result,fields) =>{
+    if(error){
+      return callback(error);
+      }
+    return callback(null,result[0]);
+}   
+    );
+}
 
 };
