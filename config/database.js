@@ -1,7 +1,6 @@
+const mysql = require('mysql');
 
-var mssql    = require('mssql');
-
-var connection = mssql.createConnection({
+var connection = mysql.createConnection({
 	host: process.env.DB_HOST,
 	user: process.env.DB_USER,
 	password: process.env.DB_PASS,
@@ -14,3 +13,5 @@ connection.connect(function(err) {
 	else
 	console.log("SQL Server Connected");
 });
+
+module.exports = connection;
