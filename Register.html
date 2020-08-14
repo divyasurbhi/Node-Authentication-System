@@ -45,12 +45,12 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Register For the Event</h2>
-                    <form action="/users_controller/createUser" method="POST">
+                    <form action="/api/users" method="POST">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">first name</label>
-                                    <input class="input--style-4" type="text" name="first_name">
+                                    <input class="input--style-4" type="text" name="first_name" required>
                                 </div>
                             </div>
                             <div class="col-2">
@@ -65,7 +65,7 @@
                                 <div class="input-group">
                                     <label class="label">Birthday</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="dob">
+                                        <input class="input--style-4 js-datepicker" type="text" name="dob" required>
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
                                 </div>
@@ -75,11 +75,11 @@
                                     <label class="label">Gender</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="gender">
+                                            <input type="radio" checked="checked" name="gender" value="male">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
-                                            <input type="radio" name="gender">
+                                            <input type="radio" name="gender" value="female">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -90,13 +90,13 @@
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Email</label>
-                                    <input class="input--style-4" type="email" name="email">
+                                    <input class="input--style-4" type="email" name="email" required>
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phone">
+                                    <input class="input--style-4" type="text" name="phoneNumber" required>
                                 </div>
                             </div>
                         </div>
@@ -104,13 +104,13 @@
                                 <div class="col-2">
                                         <div class="input-group">
                                             <label class="label">Create Password</label>
-                                            <input class="input--style-4" type="password" name="password">
+                                            <input class="input--style-4" type="password" name="password" required>
                                         </div>
                                     </div>
                                     <div class="col-2">
                                             <div class="input-group">
                                                 <label class="label">Confirm Password</label>
-                                                <input class="input--style-4" type="password" name="passwordConfirm">
+                                                <input class="input--style-4" type="password" name="passwordConfirm" required>
                                             </div>
                                         </div>
                        
@@ -120,7 +120,7 @@
                             <div class="input-group">
                             <label class="label">Choose Event</label>
                             <div class="rs-select2 js-select-simple select--no-search" style="width:250px">
-                                <select name="event">
+                                <select name="event" required>
                                     <option disabled="disabled" selected="selected"></option>
                                     <option>Health Workshop</option>
                                     <option>Baking Workshop</option>
@@ -134,7 +134,7 @@
                             <div class="input-group">
                             <label class="label">Event Duration</label>
                             <div class="rs-select2 js-select-simple select--no-search" style="width:250px">
-                                <select name="duration">
+                                <select name="duration" required>
                                     <option disabled="disabled" selected="selected"></option>
                                     <option>3 Days</option>
                                     <option>7 Days</option>

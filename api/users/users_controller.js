@@ -8,7 +8,7 @@ module.exports={
   createUser : (req, res)=>{
   console.log(req.body);
   const body= req.body;
-  const salt= genSaltSync(10);
+  const salt= genSaltSync(4);
   body.password= hashSync(body.password,salt);
   createUser(body,(error,result)=>{
 if(error)
@@ -20,12 +20,13 @@ if(error)
   });
 }
 return res.status(200).json({
-  success:0,
+  success:1,
+  message:'Form Submitted',
   data:result
 });
   });
   
-  res.send("Form Submitted");
+  
 },
 
 getUserById :(req,res)=>{
@@ -70,7 +71,8 @@ getAllUsers :(req,res)=>{
 
   updateUser :(req,res)=>{
     const body= req.body;
-    const salt =genSaltSync(10);
+    const salt = genSaltSync(4);
+    console.log("entered password",body.password )
     body.password= hashSync(body.password,salt);
     updateUser(body,(error,result)=>{
       if(error){

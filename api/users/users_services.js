@@ -1,16 +1,17 @@
 const db= require('../../config/database');
-
+var dateFormat = require('dateformat');
 module.exports={
 
     createUser:(data,callback)=>{
+        var dob= dateFormat(data.dob, "isoDate");
     db.query(
         `insert into userDetails(FirstName,LastName,Gender,DOB,Email,Password,Event, Duration,PhoneNumber)
         values(?,?,?,?,?,?,?,?,?)`,
     [
-data.first_Name,
-data.last_Name,
+data.first_name,
+data.last_name,
 data.gender,
-data.dob,
+dob,
 data.email,
 data.password,
 data.event,
@@ -52,14 +53,15 @@ getUserById:(id,callback)=>{
 },
   
 updateUser:(data,callback)=>{
+    var dob= dateFormat(data.dob, "isoDate");
     db.query(
         `Update userDetails set FirstName=?, LastName=?, Gender=?, DOB=?, Email=?, Password=?,Event=?,Duration=?,PhoneNumber=? where id=?`,
     [
        
-data.first_Name,
-data.last_Name,
+data.first_name,
+data.last_name,
 data.gender,
-data.dob,
+dob,
 data.email,
 data.password,
 data.event,
@@ -68,10 +70,11 @@ data.phoneNumber,
 data.id
 ],
 (error,result,fields) =>{
+    console.log("service"+result.password);
     if(error){
       return callback(error);
     }
-    return callback(null,result);
+    return callback(null,result[0]);
 }   
     );
 },
@@ -89,9 +92,10 @@ deleteUser:(data,callback)=>{
 },
 
 getUserByEmail:(email,callback)=>{
-    db.query(`Select * from userDetails where email=?`,
+    db.query(`Select password from userDetails where email=?`,
     [email],
 (error,result,fields) =>{
+   
     if(error){
       return callback(error);
       }
