@@ -4,28 +4,26 @@ dotenv.config({path: './config.env' });
 
 module.exports={
 
-    verifyToken: (req,res,next)=>{
- let token= req.get("authorization");
- if(token){
-//Remove the bearer
-token= token.slice(7);
-verify(token,process.env.key,(err,decoded)=>{
-    if(err){
-        res.json({
-            success:0,
-            message:"Invalid Token"
-        });   
-    }
-    else{
+    requireLogin : (req, res, next)=> {
+     var jsontoken= localStorage.getItem('jsontoken');
+     console.log("jsontoken"+" "+jsontoken);
+      try {
+        if(jsontoken)
+        {
+        verify(jsontoken, process.env.key);
         next();
-    }
-})
- }
- else{
-     res.json({
-         success:0,
-         message:"Access Denied! Unauthorized User"
-     });
- }
-}
+      }
+      else{
+        var alertmsg="Access Denied! Invalid Token";
+        return res.redirect('/alert'+'/'+alertmsg); 
+      }
+      } catch(err) {
+           var alertmsg="Access Denied! Unauthorized User";
+            return res.redirect('/alert'+'/'+alertmsg);
+      }
+
+      
+        
+      }
+
 };

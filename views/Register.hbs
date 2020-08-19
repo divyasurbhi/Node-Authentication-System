@@ -26,6 +26,7 @@
 </head>
 
 <body>
+    
     <div class="page-wrapper bg-gra-02  p-b-100 font-poppins">
             <nav class="navbar navbar-inverse">
                     <div class="container-fluid">
@@ -35,8 +36,7 @@
                       
                       <ul class="nav navbar-nav navbar-right">
                         <li><a href="/"><span class="glyphicon glyphicon-home"></span>Home</a></li>
-                        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span>Profile</a></li>
-                        <li><a href="/login"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+                        <li><a href="/login"><span class="glyphicon glyphicon-log-out"></span>Login</a></li>
                       </ul>
                     </div>
                   </nav>
@@ -45,12 +45,13 @@
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Register For the Event</h2>
-                    <form action="/api/users" method="POST">
+                    <form  action="/api/users" method="POST" name="registration"  >
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">first name</label>
                                     <input class="input--style-4" type="text" name="first_name" required>
+                                    
                                 </div>
                             </div>
                             <div class="col-2">
@@ -68,6 +69,7 @@
                                         <input class="input--style-4 js-datepicker" type="text" name="dob" required>
                                         <i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
                                     </div>
+                                 
                                 </div>
                             </div>
                             <div class="col-2">
@@ -91,12 +93,14 @@
                                 <div class="input-group">
                                     <label class="label">Email</label>
                                     <input class="input--style-4" type="email" name="email" required>
+                                 
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phoneNumber" required>
+                                    <input class="input--style-4" type="text" name="phoneNumber" minlength="10" required>
+  
                                 </div>
                             </div>
                         </div>
@@ -104,13 +108,15 @@
                                 <div class="col-2">
                                         <div class="input-group">
                                             <label class="label">Create Password</label>
-                                            <input class="input--style-4" type="password" name="password" required>
+                                            <input class="input--style-4" type="password" name="password" minlength="6" required>
+                                            
                                         </div>
                                     </div>
                                     <div class="col-2">
                                             <div class="input-group">
                                                 <label class="label">Confirm Password</label>
-                                                <input class="input--style-4" type="password" name="passwordConfirm" required>
+                                                <input class="input--style-4" type="password" name="passwordConfirm" minlength="6" required>
+                                            
                                             </div>
                                         </div>
                        
@@ -124,10 +130,13 @@
                                     <option disabled="disabled" selected="selected"></option>
                                     <option>Health Workshop</option>
                                     <option>Baking Workshop</option>
+                                    <option>Clay Workshop</option>
                                     <option>Fine Arts Workshop</option>
+                                    <option>Robotics Workshop</option>
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
+                            
                         </div>
                     </div>
                     <div class="col-2">
@@ -142,6 +151,7 @@
                                 </select>
                                 <div class="select-dropdown"></div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -151,10 +161,9 @@
                             <input class="input--style-4" type="file" name="photo">
                         </div>
                         </div>
-                        <div class="p-t-15">
-                            <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
-                            <button class="btn btn--radius-2 btn--blue" type="submit" href="/login">Already Registered</button>
-                        </div>
+                        <div class=" row p-t-15">
+                            <button class="btn btn--radius-2 btn--blue col-4" type="submit">Submit</button>
+                        <a href="/login" style="margin-left: 44%; margin-top: 20px;"><span class="glyphicon glyphicon-user col-6"></span>Already Registered</a>                        </div>
                     </form>
                 </div>
             </div>
@@ -163,6 +172,8 @@
 
     <!-- Jquery JS-->
     <script src="vendor/jquery/jquery.min.js"></script>
+  <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <!-- Vendor JS-->
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/datepicker/moment.min.js"></script>
@@ -170,6 +181,8 @@
 
     <!-- Main JS-->
     <script src="js/global.js"></script>
+     <script src="js/FormValidate.js"></script>
+
 
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 
